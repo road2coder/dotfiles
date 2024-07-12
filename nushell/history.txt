@@ -1,0 +1,1674 @@
+mkdir --help
+pwd
+mkdir aaa/ccc/eee
+ls
+ls aaa
+rm -rf aaa
+pwd
+coreutils.exe mkdir aaa/ddd/ccc
+coreutils.exe mkdir aaa/ddd/ccc -p
+rm -rf aaa
+which mkdir
+mkdir -v
+mkdir -h
+mkdir aaa/bbb/ccc -v
+rm -rf aaa
+ls -al
+which ls
+which mv
+wsl --import Arch D:\wsl\Arch E:\备份\arch.work.tar
+scoop install listary
+exit
+echo $env.http_proxy
+echo $env.http_proxy='http://127.0.0.1:1080/'
+$env.http_proxy = 'http://127.0.0.1:1080/'
+echo $env.http_proxy
+$env.https_proxy = 'http://127.0.0.1:1080/'
+aria2c
+scoop install listary
+exit
+scoop uninstall listary
+exit
+wsl
+exit
+scoop install yazi tokei
+$env.https_proxy = 'http://127.0.0.1:1080/'
+$env.http_proxy = 'http://127.0.0.1:1080/'
+scoop install yazi tokei
+scoop install main/tokei
+$env.all_proxy = "socks5://127.0.0.1:1080/"
+scoop install main/tokei
+exit
+scoop install tokei
+scoop install main/tokei
+scoop --help
+scoop install yazi
+reboot
+shutdown -r -t 0
+scoop install yazi
+scoop install git
+scoop install lazygit
+scoop install yazi
+scoop bucket add 
+scoop bucket add main
+scoop install yazi tokei
+yazi
+scoop install mingw
+scoop install main/mingw
+git clone git@github.com:road2coder/nvim.git $($env.LOCALAPPDATA/nvim)
+echo $($env.LOCALAPPDATA)
+echo $"($env.LOCALAPPDATA)"
+git clone git@github.com:road2coder/nvim.git $"($env.LOCALAPPDATA)/nvim"
+cd $"($env.LOCALAPPDATA)/nvim"
+nvim
+rm -rf "$($env.LOCALAPPDATA)/nvim-data"
+nvim
+rm ..\nvim-data\
+rm -rf ..\nvim-data\
+nvim
+rm -rf ..\nvim-data\
+nvim
+rm -rf ..\nvim-data\
+$env.http_proxy = 'http://127.0.0.1:1080/'
+$env.https_proxy = 'http://127.0.0.1:1080/'
+nvim
+exit
+nvim
+exit
+cd $"($env.LOCALAPPDATA)/nvim"
+$env.https_proxy = 'http://127.0.0.1:1080/'
+$env.http_proxy = 'http://127.0.0.1:1080/'
+nvim
+echo $"($env.LOCALAPPDATA)"
+echo $env.http_proxy
+fnm --version
+scoop install fnm
+fnm env
+fnm env --help
+fnm env --bash bash
+fnm env --shell bash
+ls C:\Users\road2\AppData\Local\fnm_multishells\8336_1712399707545
+ls C:\Users\road2\AppData\Local\fnm_multishells\8336_1712399707545\
+ls C:\Users\road2\AppData\Local\fnm_multishells
+ls C:\Users\road2\AppData\Local\fnm_multishells\8336_1712399707545 -l
+ls C:\Users\road2\AppData\Local\fnm_multishells\ -l
+fnm exit
+exit
+cd ~\.config\wezterm\
+nvim
+fnm env --shell bash
+$env
+$env | table -e
+scoop install starship
+fnm ls-remote
+pwd
+ls
+mkdir --help
+which which
+$nu
+which nu
+exit
+exit
+"$env.config.show_banner = false" out> $nu.config-path
+exit
+nvim $nu.config-path
+fnm env --shell bash
+wsl
+exit
+fnm env --shell bash
+$env.Path
+nvim $nu.env-path
+exit
+$env.Path
+fnm ls -remote
+fs lsr
+fnm ls-remote
+fnm install 18
+fnm ls-remote
+fnm install lts
+fnm --help
+fnm install lts --node-dist-miror https://nodejs.org/dist
+fnm install lts --node-dist-mirror https://nodejs.org/dist
+fnm install 20
+node --version
+:qa
+exit
+exit
+node --version
+$env.Path
+fnm env --shell bash
+fnm env --shell bash | lines | str replace 'export ' '' | str replace -a '"' '' | split column = | rename name value | where name != "FNM_ARCH" && name != "PATH" | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value }
+fnm env --shell bash | lines
+fnm env --shell bash | lines | str replace 'export ' '$env.'
+fnm env --shell bash | lines | str replace 'export ' '' | split column
+fnm env --shell bash | lines | str replace 'export ' '' | split column = 
+fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value
+fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name ~= 'PATH'
+fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH'
+let fnmEnvs = fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value
+$fnmEnvs
+$env.PATH
+fnm env --shell powershell
+fnm env --shell power-shell
+'fsaf;fdsafdasd' | split ';'
+[{name: '11', vae: '22'},{name: '22', vae: '33'}] | to json
+[{name: '11', vae: '22'},{name: '22', vae: '33'}] | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value }
+[{name: '11', vae: '22'},{name: '22', vae: '33'}] | reduce -f {} {|it, acc| $acc | upsert $it.name $it.vae }
+let fnmEnvs = fnm env --shell power-shell | lines | str replace 'export ' '' | split column = | rename name value
+$fnmEnvs
+let fnmEnvs = fnm env --shell power-shell | lines | str replace '$env:' '' | split column = | rename name value
+$fnmEnvs
+$fnmEnvs[0]
+$fnmEnvs.0
+$fnmEnvs.0.value = []
+let mut fnmEnvs = fnm env --shell power-shell | lines | str replace '$env:' '' | split column = | rename name value
+clear
+fnm env --shell power-shell | lines | str replace '$env:' '' | split column = | rename name value
+fnm env --shell power-shell | lines | str replace '$env:' '' | split column = | rename name value | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value }
+fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH'
+fnm env --shell bash
+$env.Path
+$env.PATH
+$env.OS
+load-env(fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH')
+load-env (fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH')
+load-env (fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH' | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value })
+$env.FNM_ARCH
+$env.os
+$env.OS
+fnm env --shell bash
+exit
+fnm env --shell bash
+$env.Patht
+exit
+$env.FNM_MULTISHELL_PATH
+$env.FNM_NODE_DIST_MIRROR
+fnm env --shell bash
+exit
+fnm env --shell bash
+"adfsafa" | str replace "\"" ""
+fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH' | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value | str replace "\"" "" }
+fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH' | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value }
+fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH' | reduce -f {} {|it, acc| $acc | upsert $it.name ($it.valu)e }
+fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH' | reduce -f {} {|it, acc| $acc | upsert $it.name ($it.value) }
+fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH' | reduce -f {} {|it, acc| $acc | upsert $it.name ($it.value | str replace "\"" "") }
+fnm env --shell bash | lines | str replace 'export ' '' | split column = | rename name value | where name != 'PATH' | reduce -f {} {|it, acc| $acc | upsert $it.name ($it.value | str replace --all "\"" "") }
+fnm env --shell bash
+exit
+exit
+$env.OS
+$env.OS | str contains 'Windows'
+exit
+$env.Patht
+$env.FNM_MULTISHELL_PATH
+node --version
+whoami
+uname
+uname -s
+uname --help
+clear
+which uname
+uname
+uname | describe 
+which uname
+which uname | type
+which uname | where type='built-in'
+which uname | where type == 'built-in'
+((which uname).type | get 0) == 'external'
+((which uname).type | get 0) == 'built-in'
+exit
+node --version
+$env.PATH | describe 
+$env.Path | describe 
+$env.Path
+wsl
+exit
+wsl
+exit
+nvimexit
+exit
+nvim $nu.env-path
+char esep
+fnm env --shell bash
+exit
+wsl
+pwd
+['a'] | append 'b'
+mua ml = []
+mua ml = ['fsaddf']
+mut ml = []
+ml | append ‘123’
+ml | append '123'
+ml
+$ml
+wsl
+exit
+which curl
+which weget
+nvim
+$env.http_proxy = 'http://127.0.0.1:1080/'
+$env.https_proxy = 'http://127.0.0.1:1080/'
+which rustup-init.exe
+rustup --version
+rustup-init.exe
+.\rustup-init.exe
+cargo --verson
+cargo --version
+rustup doc
+cd D:\Code\Kingsware\aom_develop\VueCodeBase\web-vue\
+nvim
+scoop install ripgrep
+$env.https_proxy = 'http://127.0.0.1:1080/'
+$env.http_proxy = 'http://127.0.0.1:1080/'
+scoop install ripgrep
+nivm
+exit
+cargo --version
+rustup `--help\`
+rustup --help
+rustup update
+$env.http_proxy = 'http://127.0.0.1:1080/'
+$env.https_proxy = 'http://127.0.0.1:1080/'
+rustup update
+pwd
+cd D:\Code\Kingsware\aom_develop\VueCodeBase\web-vue\
+git pull
+lazygit
+cd ../..
+ll
+ls
+git status
+cd ..
+ls -l
+git config remote get-url origin
+exit
+rustc -V
+rust --version
+rustc --version
+echo $env.Path
+exit
+mkdir D:\Code\rust-learning
+cd D:\Code\rust-learning\
+mkdir hello-world
+ruff
+cd hello-world\
+scoop ls
+scoop list
+scoop uninstall wezterm
+pwd
+exit
+cd $"($env.LOCALAPPDATA)/nvim"
+git status
+git pulll
+git pull
+ls -l
+$env.https_proxy = 'http://127.0.0.1:1080/'
+$env.http_proxy = 'http://127.0.0.1:1080/'
+scoop update
+scoop list
+pwd
+wsl
+exit
+exit
+wsl
+pwd
+exit
+ping http://192.168.104.192/
+ping 192.168.104.192
+wslview
+wsl
+ping test.ustc.edu.cn
+ping test.ustc.edu.cn -p
+ping --help
+ping test.ustc.edu.cn -t
+clear
+ping test.ustc.edu.cn -t
+pwd
+$env.http_proxy = 'http://127.0.0.1:1080/'
+$env.https_proxy = 'http://127.0.0.1:1080/'
+ping github.com
+ping google.coom
+ping google.com
+pwd
+wsl
+node --version
+cat $nu.config-path
+cat $nu.env-path
+cat $nu.env-path | grep '$env'
+grep
+mingw
+make --version
+scoop list
+grep
+cat $nu.env-path
+cat $nu.env-path | lines
+cat $nu.env-path | lines | str contains 'lines'
+cat $nu.env-path | lines | where str contains 'lines'
+cat $nu.env-path | lines | where  contains 'lines'
+cat $nu.env-path
+cd $"($env.LOCALAPPDATA)/nvim"
+git pull
+rustup --version
+rust-analyzer.exe 
+cd D:\Code\rust-learning\
+ll
+ls -l
+cargo new guessing_game
+cd guessing_game\
+cargo run
+ls /mnt
+wsl --shutdown
+wsl
+wsl --shutdown
+exit
+exit
+wsl
+wsl --shutdown
+wsl
+wsl --shutdown
+nvim
+rustc main.rs
+nvim
+rustc main.rs
+ls
+.\main.exe
+cd ..\guessing_game\
+nvim
+rust-analyzer.exe 
+$env.https_proxy = 'http://127.0.0.1:1080/'
+$env.http_proxy = 'http://127.0.0.1:1080/'
+scoop update
+lazygit --version
+cd D:\Code\rust-learning\
+yazi
+wsl
+wsl --shutdown
+npm create vue@latest
+exit
+wsl
+exit
+exit
+wsl
+ssh root@192.168.150.101
+ssh
+$env.http_proxy = 'http://127.0.0.1:1080/'
+$env.https_proxy = 'http://127.0.0.1:1080/'
+scoop install openssh
+ssh --version
+ssh root@192.168.150.101
+ping 192.168.150.101
+ssh root@192.168.150.101
+ssh root@192.168.150.102
+scoop install openssh
+pwd
+rustup component add rust-analayzer
+rustup component add rust-analyzer
+cd E:\Code\learning\rust\
+ll
+ls -al
+pwd
+ls -l
+ls -a
+ls -d
+pwd
+cd var_mut\
+nvim
+npm --version
+$env.https_proxy = 'http://127.0.0.1:1080/'
+$env.http_proxy = 'http://127.0.0.1:1080/'
+nvim
+rm -rf $'($env.LOCALAPPDATA)\nvim'
+rm -rf $'($env.LOCALAPPDATA)\nvim-data'
+cd $'($env.LOCALAPPDATA)'
+git clone git@github.com:road2coder/nvim.git $"($env.LOCALAPPDATA)/nvim"
+cd -
+pwd
+nvim
+ls -al
+cd ..
+pwd
+ls
+cd data_types\
+cargo run
+nvim
+cd .. 
+mkdir functions
+cd ..
+cd rust\
+rm -rf functions\
+cargo new functions
+cd functions\
+exit
+cargo run
+nvim
+cd .. && cargo new test
+cd .. and cargo new test
+cd ..; cargo new ctrl_flow
+cd ctrl_flow\
+cd ..; cd ctrl_flow
+cargo run
+nvim
+exit
+exit
+wezterm --help
+cat $nu.env-path
+node --version
+fnm -V
+fnm -h
+fnm help
+fnm
+fnm h
+clear
+fnm help
+fnm --fnm-dir
+fnm env --shell bash
+fnm env --help
+fnm env --shell bash --json
+fnm env  --json
+let a = fnm env
+let a = fnm env --json
+a
+$a
+$a.FNM_ARCH
+fnm env --help
+fnm env -h
+fnm env --resolve-engines
+fnm env --resolve-engines --shell bash
+fnm env --shell bash --use-on-cd
+wsl --shutdown
+exit
+cd $'($env.LOCALAPPDATA)/nvim'
+git pull
+exit
+ll
+pwd
+exit
+wsl
+pwd
+wsl
+exit
+ipconfig
+exit
+ssh root@192.168.150.102
+exit
+exit
+npm init
+npm install @types/node
+ls
+rm -rf node_modules package.json package-lock.json
+exit
+exit
+exit
+wsl
+which wezterm
+exit
+wsl
+exit
+wsl
+exit
+nvim
+pwd
+node
+wsl
+exit
+wsl
+pwd
+exit
+wsl
+exit
+wsl
+exit
+wsl
+tre
+tree
+which tree
+tree --help
+tree -L 3
+clear
+exit
+ssh root@192.168.150.102
+pwd
+$env.v1 = 'root@192.168.150.102'
+echo $env.v1
+ping 192.168.150.102
+echo $env.v1
+ping $env.v1
+ssh $env.v1
+exit
+pwd
+$env.v1 = 'root@192.168.150.102'
+ssh $env.v1
+exit
+$nu.config-path
+exit
+$env.http_proxy = 'http://127.0.0.1:1080/'
+$env.https_proxy = 'http://127.0.0.1:1080/'
+scoop update
+scoop list
+fzf *.md
+scoop install fzf
+fzf *.md
+fzf --help
+scoop uninstall fzf
+cmd
+exit
+cd $'($env.PROFILE)'
+cd $'($env.USERPROFILE)'
+cd .config\wezterm\
+exit
+nu
+exit
+pwd
+cmd
+exit
+nvim
+exit
+pwd
+help echo
+echo
+echo 1
+echo 'a' 'b'
+echo 1 
+1 == 1
+let x 
+let x  = 1
+let y = &mut x
+let y = mut x
+let y = x
+echo $x
+ls
+ls | table
+ls
+let x = ls | table
+echo $x
+$x.1
+$x[1]
+$x
+$x | where size > 1kb
+$x | where size > 1
+ls | where size > 1kb
+ls
+E:\Code\learning\rust\
+cd 07_ownership\
+cargo run
+nvim
+cd ..
+exit
+cargo new 01_onwership_02
+cargo new 01_onwership_02 --name onwership
+ls -al
+cargo new 07_onwership_02 --name onwership
+rm -rf 01_onwership_02\
+cd 07_onwership_02\
+nvim
+cd ..
+mv 07_ownership_02 07_ownership_fn
+ls
+mv 07_onwership_02 07_ownership_fn
+cd 07_ownership_fn\
+cargo run
+cd ..\07_ownership\
+nvim
+exit
+exit
+nvim
+cd ..
+cargo new reference_brrowing
+mv reference_brrowing 08_reference_brrowing
+cd 08_reference_brrowing\
+cargo run
+cargo.exe run
+nvim
+cd ..
+cargo new slices
+mv slices 09_slices
+cd 09_slices\
+exit
+cargo run
+nvim
+cargo run
+E:\Code\learning\rust\
+ll
+ls
+mkdir structs
+cd structs\
+cargo new define_instantiating
+mv define_instantiating 01_define_instantiating\
+ls -al
+ls -a
+ls -al
+cd 01_define_instantiating\
+cargo run
+nvim
+cd ..
+cargo new examples
+cargo new 02_examples --name examples
+cargo new 02_examples --name rect_examples
+ls
+cd 02_examples\
+exit
+cargo run
+nvim
+cd ..;cargo new struct_methods
+mv struct_methods 03_struct_methods
+cd 03_struct_methods\
+nvimm
+cargo run
+nvim
+exit
+exit
+nvim
+cd ..
+ls
+cd ..
+ls
+mkdir 01_hello
+mv 01_hello_world 01_hello\
+ls
+ls 01_hello\
+ls
+mkdir 03_common_concepts
+mv 03_var_mut 03_common_concepts\01_var_mut
+mv 04_data_types 03_common_concepts\02_data_types
+mv 05_functions 03_common_concepts\03_functions
+ls
+mv 06_ctrl_flow 03_common_concepts\04_ctrl_flow
+ls 03_common_concepts\
+ls
+mkdir 04_ownership
+mv 07_ownership 04_ownership\01_ownership
+mv 07_ownership_fn\ 04_ownership\02_onwership_fn
+mv 08_reference_brrowing\ 04_ownership\03_reference_brrowing
+mv 09_slices 04_ownership\04_slices
+ls
+mv structs 05_structs
+cd 04_ownership\
+ls
+cd 01_ownership\
+nvim
+cd ..\02_onwership_fn\
+nvim
+cd ../..
+ll
+ls
+mkdir 06_enums_pattern_match
+cargo new define_num
+ls
+mv define_num 06_enums_pattern_match\01_define_num
+cd 06_enums_pattern_match\01_define_num\
+nvim
+cd ..
+mv 01_define_enum
+mv 01_define_num 01_define_enum
+cd 01_define_enum\
+nvim
+cd ..
+ls
+cargo new enum_width_data
+mv enum_width_data 02_enum_width_data
+cd 02_enum_width_data\
+nvim
+cd ..
+rm 02_enum_width_data -r
+ls
+cd 01_define_enum\
+nvim
+exit
+E:\Code\learning\rust\
+ll
+ls -al
+cd 06_enums_pattern_match\
+ls
+cd 01_define_enum; nvim
+cd ..;cargo new enum_option
+ls
+mv enum_option 01_enum_option
+ls
+mv 01_enum_option 02_enum_option
+cd 02_enum_option\
+fnm abc
+fnm env --help
+exit
+cargo run
+exit
+nvim
+cd ../..
+ls
+mkdir 08_common_collections
+cd 08_common_collections\
+cargo new vector
+mv vector 01_vector
+cd 01_vector\
+E:\Code\learning\rust\
+ll
+ls
+mkdir 07_module_system
+cd 07_module_system\
+ls
+cargo new packages_crates
+mv packages_crates 01_packages_crates
+cd 01_packages_crates\
+fnm env --json
+cd ../.. 
+cd 08_common_collections\
+ls
+cd 01_vector\
+ls
+nvim
+exit
+cargo run
+E:\Code\learning\rust\
+ll
+ls
+cd 08_common_collections\
+ll
+ls
+cd 01_vector\
+ls
+cargo run
+cd ../../
+ls
+cd 03_common_concepts\
+ls
+cd ctrl_flow\
+cd 04_ctrl_flow\
+nvim
+E:\Code\learning\rust\
+ls
+cd 08_common_collections\
+cd 01_vector\
+ls
+nvim
+$env.https_proxy = 'http://127.0.0.1:1080/'
+$env.http_proxy = 'http://127.0.0.1:1080/'
+$env.https_proxy = 'http://127.0.0.1:1080/'
+nvim
+cd ..
+cargo new string
+mv string 02_string
+cd 02_string
+cd ../
+cd 01_vector\
+nvim
+exit
+scoop list
+scoop update
+cargo run
+nvim
+nvi
+cargo run
+nvim
+exit
+cd ..;cargo new hash_map
+mv hash_map 03_hash_map
+cd 03_hash_map
+cargo run
+nvim
+exit
+echo hello
+'{a:123}' | parse
+'{a:123}' | parse --json
+parse --help
+fnm env --json | from json
+load-env (fnm env --json | from json)
+$FNM_DIR
+echo $env.FNM_DIR
+cat $nu.env-path
+$env.PATH
+fnm --version
+node --version
+$env.Path
+fnm env --json --shell cmd
+fnm env --json
+fnm env --shell cmd
+fnm env --json --help
+node --version
+exit
+sys
+exit
+exit
+esl
+(sys).host.name
+sys.host.name
+exit
+node --version
+wsl
+sys
+nvim $nu.env-path
+$nu.config-path
+cd C:\Users\road2\AppData\Roaming\nushell\
+pwd
+ls
+mv config.nu config.nu.bak
+mv env.nu env.nu.bak
+nvim history.txt
+cd ~
+pwd
+exi
+exit
+exit
+ls
+cd $'($env.LOCALAPPDATA)/nvim'
+nvim
+lazygit
+git pull
+nvim
+git pull
+nvim
+exit
+nvim
+exit
+ls
+rm env.nu config.nu
+:w
+ls
+nvim
+rm env.nu config.nu
+$env.https_proxy = 'http://127.0.0.1:1080/'
+$env.http_proxy = 'http://127.0.0.1:1080/'
+scoop update
+nu --version
+scoop install nu
+scoop update nu
+exit
+exit
+wsl
+exit
+$nu.config-path
+cd C:\Users\road2\AppData\Roaming\nushell\
+pwd
+ls
+cd D:\Code\rust-learning\
+ls
+cd hello-world\
+ls
+pwd
+cd ..\guessing_game\
+ls
+pwd
+proxyon
+exit
+proxyon
+exit
+proxyon
+exit
+exit
+exit
+proxyon
+exit
+proxyon
+exit
+exit
+exit
+proxyon
+clear
+sys
+let is_linux = (sys).host.name | str contains "Linux"
+$is_linux
+$is_linux && false
+$is_linux and false
+(sys).host
+(sys).host.keynel_version
+(sys).host.kernel_version
+proxyon
+exit
+exit
+proxyon
+$env.http_proxy
+$env.Path
+$env.https_proxy
+proxyon
+exit
+exit
+proxyon
+exit
+proxyon
+git config --help
+git config -h
+git  config --global get http.proxy
+git  config get --global http.proxy
+proxyon
+exit
+exit
+proxyon
+proxyon 
+$env.http_proxy
+$env.Path
+$env.http_proxy = 1234
+$env.http_proxy
+exit
+proxyon
+$env.http_proxy
+curl https://www.google.com/
+exit
+exit
+proxyon
+$env.HTTP_PROXY
+exit
+git config --help
+git config -h
+git config --global --get http.proxy
+exit
+proxyon
+proxyoff
+git config --global --get http.proxy
+proxyon
+git config --global --get http.proxy
+proxyoff
+proxyon
+'aa' and false
+true and false
+exit
+exit
+pwd
+cd E:\Code\learning\rust\02_guessing_game\src\
+pwd
+source
+exit
+exit
+lg
+ga
+vi
+exit
+vi
+exit
+lvi
+NVIM_APPNAME=lnvim nvim
+lg
+exit
+nvim
+cd ~
+mkdir dotfiles
+ls
+cd dotfiles
+cp -r ..\.config\nvim nvim
+cp -r ~\AppData\Local\nvim nvim
+mv ~\AppData\Local\nvim ~\AppData\Local\nvim.bak
+nvim
+mklink
+mklink /D ~\AppData\Local\nvim ~\dotfiles\nvim
+sudo mklink /D ~\AppData\Local\nvim ~\dotfiles\nvim
+mklink /D ~\AppData\Local\nvim ~\dotfiles\nvim
+nvim
+cd $"($env.LOCALAPPDATA)/nvim"
+nvim
+pwd
+cd ..
+cp -r ~\.config\wezterm ~\.config\wezterm.bak
+rm -rf ~\.config\wezterm
+cp -r ~\.config\wezterm.bak ~\dotfiles\wezterm
+mklink /D ~\.config\wezterm ~\dotfiles\wezterm
+pwd
+nvim
+exit
+wsl
+exit
+gitk
+exit
+3 ** 8
+"123123" =~ ""
+"123123" =~ "123"
+(sys).host.kernel_version =~ "WSL"
+(sys).host.kernel_version =~ "windows"
+(sys).host.kernel_version =~ "indows"
+(sys).host.name
+(sys).host.name =~ "windows"
+(sys).host.name =~ "Windows"
+(sys).host.name !~ "Windows"
+(sys).host.name !~ "sWindows"
+1 bit-or 1
+1 bit-or 0
+0 bit-or 0
+(sys).host.name =~ "windows"
+(sys).host.name =~ (i)"windows"
+(sys).host.name =~ (?i)"windows"
+(sys).host.name =~ "(i)windows"
+(sys).host.name =~ "(?i)windows"
+(sys).host.name =~ "(?i)^windows"
+(sys).host.name =~ "^[wW]indows"
+(sys).host.name =~ "[wW]indows"
+node --version
+pwd
+wsl
+pwd
+wsl
+pwd
+wsl
+exit
+nvim
+exit
+proxyon
+wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F71.0.3578.80%2FChromeStandaloneSetup.exe
+http https://www.slimjet.com/chrome/download-chrome.php?file=files%2F71.0.3578.80%2FChromeStandaloneSetup.exe
+aira2 https://www.slimjet.com/chrome/download-chrome.php?file=files%2F71.0.3578.80%2FChromeStandaloneSetup.exe
+aria2c.exe https://www.slimjet.com/chrome/download-chrome.php?file=files%2F71.0.3578.80%2FChromeStandaloneSetup.exe
+exit
+fzf
+scoop install fzf
+fzf 
+rg test
+pwd
+ls
+cd D:\Code\
+rg test
+rg test | fzf
+exit
+find
+find aaa
+find --help
+echo 'faskdjfasjkjaslkfslkvc' | fzf
+pwd
+ls
+exit
+ssh -V
+exit
+mklink /D ~\AppData\Local\nvim ~\dotfiles\tnvim
+sudo mklink /D ~\AppData\Local\nvim ~\dotfiles\tnvim
+exit
+sudo mklink /D ~\AppData\Local\nvim ~\dotfiles\tnvim
+mklink /D ~\AppData\Local\nvim ~\dotfiles\tnvim
+exit
+cat $nu.env-path
+exit
+cd ~\dotfiles\nvim\
+wsl
+exit
+wsl
+exit
+wsl
+exit
+wsl
+wsl --shutdown
+wsl
+wsl --shutdown
+wsl
+exit
+wsl
+exit
+wsl
+cd $"($env.LOCALAPPDATA)"
+ls 
+ls -l
+rm -rf nvim
+ls ~/dofiles
+ls ~
+ls ~\dotfiles\
+rm -rf ~\dotfiles\nvim
+cp -r F:\temp\nvim ~\dotfiles\
+ls ~\dotfiles\
+mklink /D ~\AppData\Local\nvim ~\dotfiles\nvim
+proxyon
+cd $"($env.LOCALAPPDATA)\nvim"
+cd $"($env.LOCALAPPDATA)"
+cd nvim
+cd $"($env.LOCALAPPDATA)\nvim"
+cd $"($env.LOCALAPPDATA)/nvim"
+cd $"($env.LOCALAPPDATA)/nvim"
+clear
+nvim
+exit
+ls
+cd D:\Code\Kingsware\
+ls
+rm -rf *
+git clone http://10.11.1.188/kingsware/vcl.git
+wsl
+ls
+exit
+ls
+git clone http://10.11.1.188/kingsware/aom.git
+ls
+cd aom
+ls
+cd ..
+cd aom\
+ls
+pwd
+cd D:\Code\Kingsware\aom\VueCodeBase\web-vue\
+npm install
+nvim
+cd $"($env.LOCALAPPDATA)/nvim"
+cd D:\Code\Kingsware\aom\VueCodeBase\web-vue\
+nvim
+cd C:\Users\road2\AppData\Local\nvim-data\mason\packages\eslint-lsp
+node --version
+npm install
+nvim
+rm -rf $'($env.LOCALAPPDATA)\nvim-data'
+exit
+rm -rf $'($env.LOCALAPPDATA)\nvim-data'
+proxyon
+cd $"($env.LOCALAPPDATA)/nvim"
+nvim
+cd $"($env.LOCALAPPDATA)/nvim-data"
+cd $"($env.LOCALAPPDATA)/nvim-data/lazy/LazyVIm"
+cd $"($env.LOCALAPPDATA)/nvim-data/lazy/LazyVim"
+cd C:\Users\road2\AppData\Local\nvim-data\mason\packages\eslint-lsp
+npm install
+exit
+nvim
+cd D:\Code\Kingsware\aom\VueCodeBase\web-vue\
+nvim
+git checkout -b develop origin/develop
+ls
+git status
+git restore .
+git status
+cd D:\Code\Kingsware\aom\VueCodeBase\qiankun-rpa\micro-lib-web\
+ls
+npm i
+cd ../../\
+ls
+npm create vue@latest
+cd D:\Code\Kingsware\
+ls
+mkdir temp
+ls
+cd D:\Code\Kingsware\
+ls
+cd D:\Code\Kingsware\aom\VueCodeBase\
+ls
+cp -r D:\Code\Kingsware\aom\VueCodeBase\qiankun* temp\
+ls
+cd temp\
+ls
+rm -rf *
+cp -r D:\Code\Kingsware\aom\VueCodeBase temp\
+cd ../../
+ls
+cd temp\
+ls
+cd VueCodeBase\
+ls
+cd qiankun\
+ls
+cd main-app\
+ls
+nvim
+npm install eslint --global
+ls
+cd ..\child-temp\
+nvim
+nvim
+ls
+cd D:\Code\Kingsware\aom\
+ls
+git checkout -b AOMManager origin/AOMManager
+git status
+git restore .
+git checkout -b AOMManager origin/AOMManager
+ls
+clear
+cd D:\Code\Kingsware\aom\VueCodeBase\
+ls
+npm create vue@latest
+cd aom-manager\
+ls
+npm i
+eixt
+exit
+cd D:\Code\Kingsware\temp\VueCodeBase\qiankun-rpa\child-temp\
+ls
+nvim
+npm i
+cd ..\..\qiankun\
+ls
+cd appComponents\
+ls
+npm i
+cd ..
+ls
+cd main-app\
+ls
+nvim
+ls
+npm install element-plus
+npm install -D unplugin-vue-components unplugin-auto-import
+nvim
+cd $"($env.LOCALAPPDATA)/nvim-data/lazy/LazyVim"
+cd $"($env.LOCALAPPDATA)/nvim"
+nvim
+nvim
+nvim
+nvim
+exit
+nvim
+exit
+$env.Path
+$env.PATH
+node --version
+nvim
+cd D:\Code\Kingsware\temp\VueCodeBase\qiankun-rpa\child-temp\
+nvim
+cd ..\micro-lib-web\
+exit
+nvim
+ls
+nvim
+cd $"($env.LOCALAPPDATA)/nvim"
+nvim
+cd -
+nvim
+prettier.cmd -w src\components\Icon.vue
+nvim
+prettier.cmd -w src\components\Icon.vue
+nvim
+npm install -D less
+nvim
+git status
+cd ..
+ls
+git status
+git pull
+git pull
+git add .
+nvim
+npm install prettier -g
+prettier -w src/**/*.js
+prettier -w src/**/*.css
+prettier -w src/**/*.js
+git status
+git restore --staged .
+git restore .
+git status
+git pull
+git add .
+git restore --staged .
+git config --global core.autocrlf input.
+git config --global core.autocrlf input
+git add .
+git restore --staged .
+nvim
+prettier -w src/**/*.vue
+git add .
+cd $"($env.LOCALAPPDATA)/nvim-data/lazy/LazyVim"
+nvim
+exit
+nvim
+exit
+npm run dev
+nvim
+npm i
+npm run dev
+wsl
+cd D:\Code\Kingsware\aom\VueCodeBase\aom-manager\
+ls
+cd D:\Code\Kingsware\temp\VueCodeBase\qiankun-rpa\micro-lib-web\
+npm run dev
+exit
+cd D:\Code\Kingsware\aom\VueCodeBase\aom-manager\
+clear
+cd D:\Code\temp
+mkdir D:\Code\temp
+cd D:\Code\temp
+mkdir server
+cd se
+cd server\
+npm init
+cd D:\Code\temp\server\
+npm install express
+npm run dev
+npm run dev
+node main.js
+clear
+npm install axios
+node main.js
+npm run dev
+cd D:\Code\Kingsware\aom\VueCodeBase\web-vue\
+cd 0
+cd -
+nvim
+node main.js
+npm install express-raw
+npm install body-parser
+node main.js
+nvim
+node main.js
+npm install cors
+node main.js
+npm run dev
+npm install nodemon
+npm install nodemon -g
+nodemon main.js
+clear
+npm install
+nodemon main.js
+clear
+nodemon main.js
+cl
+clear
+nodemon main.js
+npm run dev
+clear
+npm run dev
+clea
+clear
+npm run dev
+nodemon main.js
+clear
+nodemon main.js
+npm run dev
+cd ..
+ls
+cd ..
+git status
+lazygit
+git status
+git staatus
+git status
+exit
+ls
+git status
+cd VueCodeBase\
+ls
+cd aom-manager\
+ls
+cd ..
+rm -rf aom-manager\
+nvim
+exit
+nvim
+exit
+nvim
+exit
+exit
+cd D:\Code\Kingsware\aom
+git status
+git clean -d -f
+git switch develop
+git pull
+cp VueCodeBase\web-vue ~\Desktop\
+cd D:\Code\Kingsware\aom
+git status
+rm -rf VueCodeBase\web-vue\node_modules
+cp -r VueCodeBase\web-vue ~\Desktop\
+git switch AOMManager
+git status
+cd D:\Code\Kingsware\aom
+git status
+git pull
+cp -r ~\Desktop\web-vue\ VueCodeBase\
+cls
+cd VueCodeBase\web-vue\
+git status
+cd ../..
+ls
+git status
+git restore .
+git status
+git clean -d -f
+git status
+cd ../..
+cp -r ~\Desktop\web-vue\ VueCodeBase\aom-manager
+cd VueCodeBase\aom-manager\
+git status
+npm i
+nvim
+ls
+rm -rf node_modules package-lock.json
+exit
+exit
+cd D:\Code\Kingsware\aom\VueCodeBase\aom-manager\
+npm i
+npm run dev
+node --version
+fnm install ls-remote
+fnm  ls-remote
+fnm install 16.13.0
+fnm ls
+fnm default 16
+npm run dev
+clear
+rm -rf node_modules package-lock.json
+cp ~\Desktop\package-lock.json .\
+ls
+npm install
+npm run dev
+rm -rf node_modules\.cache\
+npm i
+npm run dev
+rm -rf node_modules\.cache\
+nvim
+npm install prettier -g
+prettier -w src/**/*.vue
+prettier
+prettier -w src/**/*.vue
+prettier.cmd  -w src/**/*.vue
+prettier.cmd  -w *.vue
+prettier.cmd  -w **/*.vue
+which prettier
+npm run dev
+wsl
+nvim
+nvim
+npm run dev
+cd ../..
+git status
+lazygit
+lg
+git status
+git status
+git add .
+git config --global core.autocrlf input
+git add .
+git status
+git restore --staged .
+git pull
+git status
+nvim
+which prettier
+C:\Users\road2\AppData\Local\fnm_multishells\124632_1716187973175\prettier.cmd -w src/**/*.js
+C:\Users\road2\AppData\Local\fnm_multishells\124632_1716187973175\prettier.cmd -w src/**/*.vue
+C:\Users\road2\AppData\Local\fnm_multishells\124632_1716187973175\prettier.cmd -w src/**/*.ts
+C:\Users\road2\AppData\Local\fnm_multishells\124632_1716187973175\prettier.cmd -w src/**/*.vue
+prettier.cmd  -w src/**/*.js
+git add .
+git restore --staged .
+prettier.cmd  -w src/**/*.*
+git status
+git add .
+git restore --staged .
+git stash
+git pull
+git stash pop
+git status
+git add .
+git commit -m '广发统一自动化前端基础部分'
+git comfig --global user.name '胡鑫'
+git config --global user.name '胡鑫'
+git comfig --global user.email 'huxin@kingsware.cn'
+git config --global user.email 'huxin@kingsware.cn'
+git commit -m '广发统一自动化前端基础部分'
+git log
+git push
+nvim
+cd D:\Code\Kingsware\aom\VueCodeBase\aom-manager\
+cd $"($env.LOCALAPPDATA)/nvim"
+nvim
+nvim
+exit
+nvim
+git status
+lazygit
+nvim
+clear
+git status
+lazygit
+git add .
+git status
+git commit -m '广发统一运维平台：服务器管理'
+git push
+git status
+nvim
+git stauts
+gs
+git stash
+git pull
+git stash pop
+npm run dev
+ls
+pwd
+npm run dev
+wsl
+exit
+ls\
+ls
+pwd
+nvim
+npm run dev
+rm -rf node_modules\.cache\
+npm run dev
+npm i
+ripgrep
+rg test
+rg test --json
+cls
+nvim
+cd $"($env.LOCALAPPDATA)/nvim"
+nvim
+$nu.config-path
+cd $nu.config-path\..
+cd $nu.config-path
+$nu.config-path
+cd C:\Users\road2\AppData\Roaming\nushell\
+ls
+explorer .
+cd $'($env.LOCALAPPDATA)'
+ls -al
+exit
+git status
+gs
+lg
+gs
+lg
+ls
+scoop list
+fnm env --shell bash
+$nu.config-path
+node --version
+nvim $nu.env-path
+cd D:\Code\Kingsware\aom\VueCodeBase\aom-manager\
+gs
+lazygit
+cd ..
+rm -rf aom-manager\
+git stash pop
+git status
+git stash list
+git switch develop
+git status
+git restore .
+git clean -d -f 
+gs
+rm -rf aom-manager\
+git status
+git restore .
+ls
+gs
+git reset --hard HEAD
+gs
+git pull
+git switch develop
+git pull
+git stash apply
+git status
+git restore --staged .
+gs
+cp -r aom-manager ~\Desktop\
+exit
+wsl
+exit
+scoop update -h
+scoop update *
+scoop update -h
+scoop update -a
+proxyon
+scoop update -a
+nvim -v
+exit
+ls
+node --version
+ls
+wsl
+exit
+exit
+wsl --shutdown
+wsl
+wsl --shutdown
+nvim
+wsl
+zh
+pwd
+ls
+wsl
+ls
+wsl
+exit
+wsl
+exit
+wsl
+exit
+wsl
+exit
+cd Desktop\
+npm create vue@latest
+fnm ls
+fnm use 20
+fnm use 16
+npm create vue@latest
+fnm use 20
+npm create vue@latest
+cd aom-plus\
+code .
+whereis code
+which code
+exit
+cd Desktop\aom-plus\
+npm i
+npm i --registry https://registry.npmmirror.com/
+npm run dev
+npm run serve
+exit
+scoop lsit
+scoop list
+fnm --version
+fnm ls
+fnm use 20
+node --version
+cls
+scoop search vscode
+proxyon
+scoop search vscode
+exit
+wsl
+scoop list
+wsl
+exit
+cd ../aom-plus
+ls
+pwd
+fnm --version
+wsl
+fnm env --shell power-shell
+fnm env --shell nushell
+fnm env --shell nu
+exit
+wsl
+git status
+wsl
+exit
+wsl
+exit
+wsl
+ls
+wsl
+view
+nview
+ls
+view .gitconfig
+view -h
+view .gitconfig
+view .\.gitconfig
+ls
+exit
+$nu.config-path
