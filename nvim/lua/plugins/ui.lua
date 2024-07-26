@@ -8,14 +8,6 @@ return {
     },
   },
   {
-    "utilyre/barbecue.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-    },
-    config = true,
-  },
-  {
     "echasnovski/mini.indentscope",
     opts = {
       symbol = "╎",

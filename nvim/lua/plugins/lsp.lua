@@ -1,6 +1,6 @@
 local data_path = vim.fn.stdpath("data")
+-- local volar_path = data_path .. "/mason/packages/vue-language-server"
 local volar_path = data_path .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
-local tsdk_path = data_path .. "/mason/packages/typescript-language-server/node_modules/typescript/lib"
 
 local make_lsp_opts = function(opts)
   opts = type(opts) == "table" and opts or {}
@@ -29,24 +29,91 @@ return {
           mason = false, -- 2.0.18
           init_options = {
             vue = {
-              hybridMode = false,
+              hybridMode = true,
             },
-            typescript = {
-              tsdk = tsdk_path,
+          },
+          settings = {
+            vue = {
+              updateImportsOnFileMove = { enabled = true },
             },
           },
         }),
-        tsserver = make_lsp_opts({
-          init_options = {
-            plugins = {
-              {
-                name = "@vue/typescript-plugin",
-                location = volar_path,
-                languages = { "vue" },
+        vtsls = {
+          on_attach = function(client, _)
+            client.server_capabilities = vim.tbl_extend("force", client.server_capabilities, {
+              workspace = {
+                fileOperations = {
+                  didRename = {
+                    filters = {
+                      {
+                        pattern = {
+                          glob = "**/*.{ts,cts,mts,tsx,js,cjs,mjs,jsx,vue}",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            })
+          end,
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+            "vue",
+          },
+          settings = {
+            complete_function_calls = true,
+            vtsls = {
+              tsserver = {
+                globalPlugins = {
+                  {
+                    name = "@vue/typescript-plugin",
+                    location = volar_path,
+                    languages = { "vue" },
+                    configNamespace = "typescript",
+                    enableForWorkspaceTypeScriptVersions = true,
+                  },
+                },
+              },
+              enableMoveToFileCodeAction = true,
+              autoUseWorkspaceTsdk = true,
+              experimental = {
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
               },
             },
+            typescript = {
+              updateImportsOnFileMove = { enabled = "always" },
+              suggest = {
+                completeFunctionCalls = true,
+              },
+              -- inlayHints = {
+              --   parameterNames = { enabled = "literals" },
+              --   parameterTypes = { enabled = true },
+              --   variableTypes = { enabled = true },
+              --   propertyDeclarationTypes = { enabled = true },
+              --   functionLikeReturnTypes = { enabled = true },
+              --   enumMemberValues = { enabled = true },
+              -- },
+            },
+            javascript = {
+              updateImportsOnFileMove = { enabled = "always" },
+              -- inlayHints = {
+              --   parameterNames = { enabled = "literals" },
+              --   parameterTypes = { enabled = true },
+              --   variableTypes = { enabled = true },
+              --   propertyDeclarationTypes = { enabled = true },
+              --   functionLikeReturnTypes = { enabled = true },
+              --   enumMemberValues = { enabled = true },
+              -- },
+            },
           },
-        }),
+        },
         -- rust_analyzer 通过 rustup 安装
         rust_analyzer = make_lsp_opts({ mason = false }),
       },
