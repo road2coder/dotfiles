@@ -4,7 +4,7 @@ local volar_path = data_path .. "/mason/packages/vue-language-server/node_module
 
 local make_lsp_opts = function(opts)
   opts = type(opts) == "table" and opts or {}
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local capabilities = opts.capabilities or vim.lsp.protocol.make_client_capabilities()
   -- 添加 nvim-info 的折叠能力
   capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
@@ -20,13 +20,14 @@ return {
     opts = {
       servers = {
         jsonls = make_lsp_opts({}),
-        eslint = make_lsp_opts({
-          mason = false, -- 4.8.0
-        }),
+        eslint = make_lsp_opts({}),
         html = make_lsp_opts({}),
         cssls = make_lsp_opts({}),
         volar = make_lsp_opts({
-          mason = false, -- 2.0.18
+          on_attach = function(client)
+            -- 禁用 volar 的 goto definition 功能
+            client.server_capabilities.definitionProvider = false
+          end,
           init_options = {
             vue = {
               hybridMode = true,
@@ -38,7 +39,7 @@ return {
             },
           },
         }),
-        vtsls = {
+        vtsls = make_lsp_opts({
           on_attach = function(client, _)
             client.server_capabilities = vim.tbl_extend("force", client.server_capabilities, {
               workspace = {
@@ -113,22 +114,38 @@ return {
               -- },
             },
           },
-        },
+        }),
         -- rust_analyzer 通过 rustup 安装
         rust_analyzer = make_lsp_opts({ mason = false }),
       },
       setup = {
         -- volar 作为 ts_server 插件启动
-        -- volar = function()
-        --   return true
-        -- end,
+        volar = function()
+          -- return true
+        end,
       },
     },
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = { "davidmh/cspell.nvim" },
+    opts = function(_, opts)
+      local cspell = require("cspell")
+      opts.sources = vim.list_extend(opts.sources or {}, {
+        cspell.diagnostics.with({
+          diagnostics_postprocess = function(diagnostic)
+            diagnostic.severity = vim.diagnostic.severity.HINT
+          end,
+        }),
+        cspell.code_actions,
+      })
+    end,
   },
   {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "cspell",
         "stylua",
         "shfmt", -- bash
       },
