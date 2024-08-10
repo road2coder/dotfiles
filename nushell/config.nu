@@ -27,6 +27,7 @@ def --env proxyon [addr?:string, port = "1080"] {
   $env.all_proxy = $s_proxy
   git config --global http.proxy $h_proxy
   git config --global https.proxy $h_proxy
+  npm config set proxy $h_proxy
   echo $"代理已开: ($addr) ($port)"
 }
 def --env proxyoff [] {
@@ -35,6 +36,7 @@ def --env proxyoff [] {
   hide-env all_proxy
   git config --global --unset http.proxy
   git config --global --unset https.proxy
+  npm config delete proxy
   echo $"代理已关"
 }
 

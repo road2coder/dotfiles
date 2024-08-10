@@ -1,4 +1,8 @@
 # Note: The conversions happen *after* config.nu is loaded
+# 环境判断
+let is_linux = (sys host).name | str contains "Linux"
+let is_wsl = $is_linux and ((sys host).kernel_version | str contains "WSL")
+
 $env.ENV_CONVERSIONS = {
     "PATH": {
         from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
@@ -27,9 +31,12 @@ load-env (fnm env --json | from json)
 if ((sys host).name == 'Windows') {
   $env.Path = ($env.Path | split row (char esep) | append $env.FNM_MULTISHELL_PATH) 
 } else {
-  $env.PATH = ($env.PATH | split row (char esep) | append $env.FNM_MULTISHELL_PATH) 
+  $env.PATH = ($env.PATH | split row (char esep) | where $it !~ 'fnm' | append $'($env.FNM_MULTISHELL_PATH)/bin') 
+  # $env.PATH = ($env.PATH | split row (char esep) | append $'($env.FNM_DIR)/aliases/default/bin') 
 }
 
 # starship 环境变量设置
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
+
+cd ~
