@@ -24,8 +24,12 @@ $env.NU_PLUGIN_DIRS = [
 
 # fnm 环境设置
 load-env (fnm env --json | from json)
-if ((sys).host.name == 'Windows') {
+if ((sys host).name == 'Windows') {
   $env.Path = ($env.Path | split row (char esep) | append $env.FNM_MULTISHELL_PATH) 
 } else {
   $env.PATH = ($env.PATH | split row (char esep) | append $env.FNM_MULTISHELL_PATH) 
 }
+
+# starship 环境变量设置
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
