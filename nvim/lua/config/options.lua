@@ -9,12 +9,17 @@
 --    vim.o   相当于 set（同时设置 global 和 local）
 --    vim.opt vim.opt_local vim.opt_global:  和 vim.o vim.bo vim.go 作用相同，但用法不同，可以参考 :h vim.opt
 -- 而和 let 相关的有 vim.g vim.w vim.b 等，它们设置的变量的生效范围不同。
+
+local utils = require("utils")
 vim.g.autoformat = false
 
 if not vim.g.vscode then
   -- 非 vscode 配置
+  if utils.is_win() and vim.fn.executable("nu") then
+    vim.o.shell = "nu" -- 使用 nushell 作为 windows 的默认 shell
+  end
 else
   -- vscode 下的配置
-  local vscode = require('vscode-neovim')
+  local vscode = require("vscode-neovim")
   vim.notify = vscode.notify
 end

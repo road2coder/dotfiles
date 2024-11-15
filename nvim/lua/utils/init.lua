@@ -1,16 +1,20 @@
 local M = {}
 
+local has = vim.fn.has
+
+function M.is_win()
+  return has("win32")
+end
+
 function M.switch_ime_en()
-  local has = vim.fn.has
-  if has("win32") == 1 or has("wsl") == 1 then
+  if M.is_win() or has("wsl") == 1 then
     vim.fn.system({ "im-select.exe", "1033" })
-  elseif vim.fn.has("linux") == 1 then
+  elseif has("linux") == 1 then
     vim.fn.system({ "fcitx5-remote", "-s", "keyboard-us" })
   end
 end
 
 function M.switch_ime_cn()
-  local has = vim.fn.has
   if has("win32") == 1 or has("wsl") == 1 then
     vim.fn.system({ "im-select.exe", "2052" })
   end
@@ -73,7 +77,7 @@ function M.copy_selection(case)
   vim.fn.setreg("+", to_copy)
   vim.fn.setreg("*", to_copy)
   vim.api.nvim_input("<esc>")
-  vim.notify("copide: "..to_copy)
+  vim.notify("copide: " .. to_copy)
 end
 
 -- 转换字符串的形式
@@ -137,7 +141,7 @@ function M.copy_file_name(type)
   end
   vim.fn.setreg("+", path)
   vim.fn.setreg("*", path)
-  vim.notify("copide: "..path)
+  vim.notify("copide: " .. path)
 end
 
 return M
