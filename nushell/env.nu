@@ -39,4 +39,6 @@ if ((sys host).name == 'Windows') {
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
-cd ~
+if $is_wsl {
+  cd ~
+}
