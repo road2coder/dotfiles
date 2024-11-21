@@ -129,6 +129,13 @@ return {
           height = 0.84,
           preview_cutoff = 120,
         },
+        file_ignore_patterns = {
+          ".node_modules/",
+          ".git/",
+          ".github/",
+          ".vscode/",
+          ".idea/",
+        },
       },
     },
   },
