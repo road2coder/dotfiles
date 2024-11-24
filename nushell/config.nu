@@ -62,7 +62,6 @@ alias gshi = git stash --keep-index
 alias gct = git checkout
 
 # neovim
-alias vi = with-env { NVIM_APPNAME: "nvim" } { nvim }
-alias lvi = with-env { NVIM_APPNAME: "lnvim" } { nvim } 
+# alias vi = nvim
 alias lg = lazygit
 
