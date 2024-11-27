@@ -15,7 +15,7 @@ vim.g.autoformat = false
 
 if not vim.g.vscode then
   -- 非 vscode 配置
-  if utils.is_win() and vim.fn.executable("nu") then
+  if utils.is_win() and vim.fn.executable("nu") == 1 then
     vim.o.shell = "nu" -- 使用 nushell 作为 windows 的默认 shell
   end
 else

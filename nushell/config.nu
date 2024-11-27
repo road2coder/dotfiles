@@ -1,4 +1,3 @@
-
 $env.config = {
   show_banner: false
   buffer_editor: nvim
@@ -8,13 +7,9 @@ $env.config = {
 }
 
 # starship 提示符
-use ~/.cache/starship/init.nu
-
-
-# 环境判断
-let is_linux = (sys host).name | str contains "Linux"
-let is_wsl = $is_linux and ((sys host).kernel_version | str contains "WSL")
-
+if (executable starship) {
+  use ~/.cache/starship/init.nu
+}
 
 # 开关代理
 def get_proxy_addr [] {
@@ -25,7 +20,6 @@ def --env proxyon [addr?:string, port = "1080"] {
   let h_proxy = $"http://($addr):($port)/"
   let s_proxy = $"socks5://($addr):($port)/"
   $env.http_proxy = $h_proxy
-  $env.https_proxy = $h_proxy
   $env.https_proxy = $h_proxy
   $env.all_proxy = $s_proxy
   git config --global http.proxy $h_proxy
@@ -41,6 +35,23 @@ def --env proxyoff [] {
   git config --global --unset https.proxy
   npm config delete proxy
   echo $"代理已关"
+}
+
+# 使用 neovide 打开指定路径
+def gvi [
+  path?: string, # 要打开的路径
+  --wsl (-w) # 在 wsl 中打开
+] {
+  if (executable neovide) {
+    if $wsl {
+      wsl zsh -lic 'node --version'
+      neovide --wsl -- --cmd $'cd ($path)'
+    } else {
+      neovide -- --cmd $'cd ($path)'
+    }
+  } else {
+    print 'neovide not found'
+  }
 }
 
 
@@ -62,6 +73,6 @@ alias gshi = git stash --keep-index
 alias gct = git checkout
 
 # neovim
-# alias vi = nvim
+alias vi = nvim
 alias lg = lazygit
 

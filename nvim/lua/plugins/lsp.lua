@@ -163,4 +163,11 @@ return {
       return { ensure_installed = opts.ensure_installed }
     end,
   },
+  {
+    "LhKipp/nvim-nu",
+    build = ":TSInstall nu",
+    opts = {
+      use_lsp_features = false,
+    },
+  },
 }
