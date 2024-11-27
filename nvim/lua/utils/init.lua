@@ -3,7 +3,7 @@ local M = {}
 local has = vim.fn.has
 
 function M.is_win()
-  return has("win32")
+  return has("win32") == 1
 end
 
 function M.switch_ime_en()
