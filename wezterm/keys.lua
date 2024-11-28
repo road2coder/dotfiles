@@ -1,56 +1,35 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+local leader = { key = "c", mods = "CTRL" }
+
 local keys = {
+  -- Send "CTRL-C" to the terminal when pressing CTRL-C twice
   {
-    key = "n",
-    mods = "CTRL|SHIFT",
-    action = act.SpawnTab("CurrentPaneDomain"),
+    key = "c",
+    mods = "LEADER|CTRL",
+    action = wezterm.action.SendKey({ key = "c", mods = "CTRL" }),
   },
-  { key = "{", mods = "SHIFT|ALT", action = act.MoveTabRelative(-1) },
-  { key = "}", mods = "SHIFT|ALT", action = act.MoveTabRelative(1) },
-  --  { key = 'r',  mods = 'SUPER',  action = act.ReloadConfiguration },
-  --  { key = 'q',  mods = 'CTRL',   action = act.QuitApplication },
-  --  -- tab
-  --  { key = 'n',  mods = 'ALT',    action = act.SpawnTab 'CurrentPaneDomain' },
-  --  { key = 'q',  mods = 'LEADER', action = act.CloseCurrentTab { confirm = false } },
-  --  { key = '=',  mods = 'ALT',    action = act.ActivateTabRelative(1) },
-  --  { key = '-',  mods = 'ALT',    action = act.ActivateTabRelative(-1) },
-  --  { key = 'f',  mods = 'ALT',    action = act.ToggleFullScreen },
-  --  -- move tab
-  --  { key = ']',  mods = 'ALT',    action = act.MoveTabRelative(1) },
-  --  { key = '[',  mods = 'ALT',    action = act.MoveTabRelative(-1) },
-  --
-  --  -- window
-  --  { key = 'N',  mods = 'ALT',    action = act.SpawnWindow },
-  --
-  --  -- font size
-  --  { key = '=',  mods = 'CTRL',   action = act.IncreaseFontSize },
-  --  { key = '-',  mods = 'CTRL',   action = act.DecreaseFontSize },
-  --  { key = '0',  mods = 'CTRL',   action = act.ResetFontSize },
-  --
-  --  --panel
-  --  { key = 'j',  mods = 'ALT',    action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
-  --  { key = 'l',  mods = 'ALT',    action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  --  { key = 'q',  mods = 'LEADER', action = act.CloseCurrentPane { confirm = false } },
-  --
-  --  { key = 'h',  mods = 'CTRL',   action = act.ActivatePaneDirection 'Left' },
-  --  { key = 'j',  mods = 'CTRL',   action = act.ActivatePaneDirection 'Down' },
-  --  { key = 'k',  mods = 'CTRL',   action = act.ActivatePaneDirection 'Up' },
-  --  { key = 'l',  mods = 'CTRL',   action = act.ActivatePaneDirection 'Right' },
-  --  { key = 'z',  mods = 'CTRL',   action = act.TogglePaneZoomState },
-  --
-  --  { key = 'h',  mods = 'LEADER', action = act.AdjustPaneSize { 'Left', 5 } },
-  --  { key = 'j',  mods = 'LEADER', action = act.AdjustPaneSize { 'Down', 5 } },
-  --  { key = 'k',  mods = 'LEADER', action = act.AdjustPaneSize { 'Up', 5 } },
-  --  { key = 'l',  mods = 'LEADER', action = act.AdjustPaneSize { 'Right', 5 } },
-  --
-  --
-  --  { key = '\\', mods = 'ALT',    action = act.QuickSelect },
-  --
-  --  { key = 'f',  mods = 'CTRL',   action = act.Search 'CurrentSelectionOrEmptyString' },
-  --  { key = 'm',  mods = 'CTRL',   action = act.Hide },
-  --  { key = 'P',  mods = 'CTRL',   action = act.ActivateCommandPalette },
+  { key = "r", mods = "LEADER", action = act.ReloadConfiguration },
+
+  -- tabs
+  { key = "n", mods = "CTRL|SHIFT", action = act.SpawnTab("CurrentPaneDomain") },
+  { key = "q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
+  { key = "Q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = false }) },
+  { key = "{", mods = "CTRL|SHIFT", action = act.MoveTabRelative(-1) },
+  { key = "}", mods = "CTRL|SHIFT", action = act.MoveTabRelative(1) },
+
+  --panels
+  { key = "h", mods = "LEADER", action = act.SplitPane({ direction = "Left" }) },
+  { key = "j", mods = "LEADER", action = act.SplitPane({ direction = "Down" }) },
+  { key = "k", mods = "LEADER", action = act.SplitPane({ direction = "Up" }) },
+  { key = "l", mods = "LEADER", action = act.SplitPane({ direction = "Right" }) },
+  { key = "h", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Left") },
+  { key = "j", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
+  { key = "k", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
+  { key = "l", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
+  { key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
+  { key = "f", mods = "LEADER", action = act.TogglePaneZoomState },
 }
 
 local mouse = {
@@ -68,5 +47,5 @@ local mouse = {
 
 return {
   keys = keys,
-  -- mouse = mouse,
+  leader = leader,
 }

@@ -8,7 +8,13 @@ local function merge(...)
   return result
 end
 local wezterm = require("wezterm")
+local mux = wezterm.mux
 local config = wezterm.config_builder()
+
+wezterm.on("gui-startup", function(cmd)
+  local _, _, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
 
 require("events")
 local ui = require("ui")
