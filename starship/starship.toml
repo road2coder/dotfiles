@@ -1,0 +1,28 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+command_timeout = 1000
+
+[os]
+disabled = false
+[os.symbols]
+Windows ="[ ](#5f9aeb)" 
+Arch ="[ ](bold #4591cc)" 
+
+[package]
+disabled = true
+
+[character]
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"
+
+[git_branch]
+symbol = " "
+
+[rust]
+format = "[$symbol($version )]($style)"
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+detect_extensions = []
+
