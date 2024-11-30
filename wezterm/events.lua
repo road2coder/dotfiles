@@ -2,21 +2,14 @@ local wezterm = require("wezterm")
 
 -- event: gui-startup
 local mux = wezterm.mux
--- wezterm.on("gui-startup", function(cmd)
--- 	local _, _, window = mux.spawn_window(cmd or {})
--- 	window:gui_window():set_inner_size(1000, 600)
--- 	window:gui_window():set_position(100, 100)
--- end)
---
--- -- event: update-status
+
+wezterm.on("gui-startup", function(cmd)
+  local _, _, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
+
 wezterm.on("update-status", function(window)
   local date = wezterm.strftime("%b %-d %H:%M ")
-
-  -- local bat_str = ''
-
-  -- for _, bat in ipairs(wezterm.battery_info()) do
-  --   bat_str = bat_str .. string.format('%.0f%%', bat.state_of_charge * 100)
-  -- end
 
   window:set_right_status(wezterm.format({
     { Text = " " },
@@ -27,17 +20,11 @@ wezterm.on("update-status", function(window)
     { Text = " " },
   }))
 end)
---
--- -- event: format-tab-title
---
-wezterm.on("format-tab-title", function(tab, _, _, _, _)
-  -- i do not like how i can basically hide tabs if i zoom in
-  local is_zoomed = ""
-  if tab.active_pane.is_zoomed then
-    is_zoomed = "z"
-  end
 
+-- tabs title: z means zoomed
+wezterm.on("format-tab-title", function(tab, _, _, _, _)
+  local suffix = tab.active_pane.is_zoomed and "z " or " "
   return {
-    { Text = " " .. tab.tab_index + 1 .. is_zoomed .. " " },
+    { Text = " " .. tab.tab_index + 1 .. suffix .. " " },
   }
 end)
