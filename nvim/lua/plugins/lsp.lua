@@ -166,6 +166,7 @@ return {
   {
     "LhKipp/nvim-nu",
     build = ":TSInstall nu",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       use_lsp_features = false,
     },
