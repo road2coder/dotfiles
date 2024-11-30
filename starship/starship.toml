@@ -8,6 +8,7 @@ disabled = false
 [os.symbols]
 Windows ="[ ](#5f9aeb)" 
 Arch ="[ ](bold #4591cc)" 
+Macos = "[󰇄 ](bold #cc63ff)"
 
 [package]
 disabled = true
