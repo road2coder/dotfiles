@@ -25,6 +25,9 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
+# convenient to determine whether it is NuShell 
+$env.IS_NU = "1"
+
 # fnm 环境设置
 def executable [cmd: string] {
   (which $cmd | length) > 0
