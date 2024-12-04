@@ -1,5 +1,13 @@
-let is_linux = (sys host).name | str contains "Linux"
-let is_wsl = $is_linux and ((sys host).kernel_version | str contains "WSL")
+$env.ENV_CONVERSIONS = {
+  "PATH": {
+    from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
+    to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
+  }
+}
+let host_name = (sys host).name
+let is_linux = $host_name =~ "Linux"
+let is_wsl = $is_linux and ((sys host).kernel_version =~ "WSL")
+let is_win = $host_name =~ "Windows"
 
 # convenient to judge whether a program is launched by nu
 $env.IS_NU = "1"
@@ -11,13 +19,22 @@ def executable [cmd: string] {
 # fnm 环境设置
 if (executable fnm) {
   load-env (fnm env --json | from json)
-  $env.PATH = ($env.PATH | split row (char esep) | where $it !~ 'fnm' | append $'($env.FNM_MULTISHELL_PATH)(char psep)bin') 
+  $env.Path = $env.Path | split row (char esep) | append $env.FNM_MULTISHELL_PATH
+  mut list = $env.Path | split row (char esep)
+  if $is_win {
+    $env.PATH = $list | append $env.FNM_MULTISHELL_PATH
+  } else {
+    $env.PATH = $list | where $it !~ 'fnm' | append $'($env.FNM_MULTISHELL_PATH)/bin'
+  }
   $env.FNM_NODE_DIST_MIRROR = "https://mirrors.ustc.edu.cn/node/"
 }
 
 # cargo 环境变量
-if ($'($env.HOME)(char psep).cargo(char psep)bin' | path exists) {
-  $env.PATH = ($env.PATH | split row (char esep) | append $'($env.HOME)(char psep).cargo(char psep)bin')
+if not $is_win {
+  let rust_bin_path = $'($env.HOME)/.cargo/bin'
+  if ($rust_bin_path | path exists) {
+    $env.PATH = $env.PATH | split row '/' | append $rust_bin_path
+  }
 }
 
 # starship 环境变量设置
