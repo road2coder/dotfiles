@@ -6,10 +6,16 @@ local function augroup(name)
 end
 
 local ime_grp = augroup("input_method")
--- 进入 nvim、离开 insert 模式时，自动切换至英文输入法
-autocmd({ "InsertLeave", "VimEnter" }, {
+
+-- 进入 nvim后、离开 insert 模式时、从其他地方回到 nvim 且是 normal 模式时，自动切换至英文输入法
+autocmd({ "InsertLeave", "VimEnter", "FocusGained" }, {
   group = ime_grp,
-  callback = utils.switch_ime_en,
+  callback = function(opt)
+    local is_switch = opt.event == "FocusGained" and true or vim.api.nvim_get_mode().mode == "n"
+    if is_switch then
+      utils.switch_ime_en()
+    end
+  end,
 })
 
 -- windows系统下，进入 insert 模式自动切换到中文输入法
