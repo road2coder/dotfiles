@@ -25,13 +25,7 @@ return {
   status_update_interval = 1000,
   font_size = 14,
   font = wezterm.font_with_fallback({
-    { family = "JetBrainsMono Nerd Font", weight = "Medium" },
-    {
-      family = "FiraCode Nerd Font",
-      weight = "Medium",
-      -- italic = true,
-      -- => != !==
-      -- harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
-    },
+    "JetBrainsMono Nerd Font",
+    "FiraCode Nerd Font",
   }),
 }
