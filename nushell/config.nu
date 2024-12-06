@@ -3,6 +3,15 @@ $env.config = {
   buffer_editor: nvim
   shell_integration: {
     osc133: false #("WEZTERM_PANE" not-in $env)
+  },
+  hooks: {
+    env_change: {
+      PWD: {
+        if ((executable fnm) and [.nvmrc .node-version package.json] | path exists | any {|i| $i}) {
+          fnm use
+        }
+      }
+    }
   }
 }
 
@@ -15,7 +24,7 @@ if (executable starship) {
 def get_proxy_addr [] {
   if $is_wsl {ip route show | grep -i default | awk '{ print $3}'} else {"127.0.0.1"}
 }
-def --env proxyon [addr?:string, port = "1080"] {
+def --env proxyon [port = "1080", addr?:string] {
   let addr = if $addr == null {get_proxy_addr} else {$addr}
   let h_proxy = $"http://($addr):($port)/"
   let s_proxy = $"socks5://($addr):($port)/"
@@ -25,7 +34,7 @@ def --env proxyon [addr?:string, port = "1080"] {
   git config --global http.proxy $h_proxy
   git config --global https.proxy $h_proxy
   npm config set proxy $h_proxy
-  echo $"代理已开: ($addr) ($port)"
+  echo $"proxy enabled: ($addr) ($port)"
 }
 def --env proxyoff [] {
   hide-env http_proxy
@@ -34,13 +43,13 @@ def --env proxyoff [] {
   git config --global --unset http.proxy
   git config --global --unset https.proxy
   npm config delete proxy
-  echo $"代理已关"
+  echo "proxy disabled"
 }
 
-# 使用 neovide 打开指定路径
+# open specific dir in neovide
 def gvi [
-  path?: string, # 要打开的路径
-  --wsl (-w) # 在 wsl 中打开
+  path?: string, # path to open
+  --wsl (-w) # open dir in wsl
 ] {
   if (executable neovide) {
     if $wsl {
@@ -72,7 +81,9 @@ alias gshi = git stash --keep-index
 # git checkout
 alias gct = git checkout
 
-# neovim
 alias vi = nvim
 alias lg = lazygit
 
+if $is_wsl {
+  cd ~
+}

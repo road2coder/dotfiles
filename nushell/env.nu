@@ -6,11 +6,11 @@ let host_name = (sys host).name
 let is_linux = $host_name =~ "Linux"
 let is_wsl = $is_linux and ((sys host).kernel_version =~ "WSL")
 let is_win = $host_name =~ "Windows"
-#
-# # convenient to judge whether a program is launched by nu
+
+# convenient to judge whether a program is launched by nu
 $env.IS_NU = "1"
 
-# # fnm 环境设置
+# fnm
 if (executable fnm) {
   load-env (fnm env --json | from json)
   let list = $env.PATH | split row (char esep)
@@ -21,21 +21,17 @@ if (executable fnm) {
   }
   $env.FNM_NODE_DIST_MIRROR = "https://mirrors.ustc.edu.cn/node/"
 }
-#
-# # cargo 环境变量
+
+# rust
 if not $is_win {
   let rust_bin_path = $'($env.HOME)/.cargo/bin'
   if ($rust_bin_path | path exists) {
     $env.PATH = $env.PATH | split row ':' | append $rust_bin_path
   }
 }
-#
-# # starship 环境变量设置
+
+# starship
 if (executable starship) {
   mkdir ~/.cache/starship
   starship init nu | save -f ~/.cache/starship/init.nu
-}
-#
-if $is_wsl {
-  cd ~
 }
