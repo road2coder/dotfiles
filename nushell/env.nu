@@ -1,26 +1,19 @@
-$env.ENV_CONVERSIONS = {
-  "PATH": {
-    from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-    to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-  }
-}
-let host_name = (sys host).name
-let is_linux = $host_name =~ "Linux"
-let is_wsl = $is_linux and ((sys host).kernel_version =~ "WSL")
-let is_win = $host_name =~ "Windows"
-
-# convenient to judge whether a program is launched by nu
-$env.IS_NU = "1"
-
 def executable [cmd: string] {
   (which $cmd | length) > 0
 }
 
-# fnm 环境设置
+let host_name = (sys host).name
+let is_linux = $host_name =~ "Linux"
+let is_wsl = $is_linux and ((sys host).kernel_version =~ "WSL")
+let is_win = $host_name =~ "Windows"
+#
+# # convenient to judge whether a program is launched by nu
+$env.IS_NU = "1"
+
+# # fnm 环境设置
 if (executable fnm) {
   load-env (fnm env --json | from json)
-  $env.Path = $env.Path | split row (char esep) | append $env.FNM_MULTISHELL_PATH
-  mut list = $env.Path | split row (char esep)
+  let list = $env.PATH | split row (char esep)
   if $is_win {
     $env.PATH = $list | append $env.FNM_MULTISHELL_PATH
   } else {
@@ -28,21 +21,21 @@ if (executable fnm) {
   }
   $env.FNM_NODE_DIST_MIRROR = "https://mirrors.ustc.edu.cn/node/"
 }
-
-# cargo 环境变量
+#
+# # cargo 环境变量
 if not $is_win {
   let rust_bin_path = $'($env.HOME)/.cargo/bin'
   if ($rust_bin_path | path exists) {
-    $env.PATH = $env.PATH | split row '/' | append $rust_bin_path
+    $env.PATH = $env.PATH | split row ':' | append $rust_bin_path
   }
 }
-
-# starship 环境变量设置
+#
+# # starship 环境变量设置
 if (executable starship) {
   mkdir ~/.cache/starship
   starship init nu | save -f ~/.cache/starship/init.nu
 }
-
+#
 if $is_wsl {
   cd ~
 }

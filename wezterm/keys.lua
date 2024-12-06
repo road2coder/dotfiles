@@ -31,7 +31,7 @@ local keys = {
   { key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
   { key = "f", mods = "LEADER", action = act.TogglePaneZoomState },
 
-  { key = "m", mods = "LEADER", action = act.EmitEvent("trigger-max-window") },
+  { key = "m", mods = "LEADER", action = act.EmitEvent('trigger-max-window') },
 }
 
 local mouse = {
