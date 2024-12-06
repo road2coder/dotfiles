@@ -11,7 +11,7 @@ local ime_grp = augroup("input_method")
 autocmd({ "InsertLeave", "VimEnter", "FocusGained" }, {
   group = ime_grp,
   callback = function(opt)
-    local is_switch = opt.event == "FocusGained" and true or vim.api.nvim_get_mode().mode == "n"
+    local is_switch = opt.event == "FocusGained" or vim.api.nvim_get_mode().mode == "n"
     if is_switch then
       utils.switch_ime_en()
     end
@@ -19,7 +19,7 @@ autocmd({ "InsertLeave", "VimEnter", "FocusGained" }, {
 })
 
 -- windows系统下，进入 insert 模式自动切换到中文输入法
-autocmd({ "InsertEnter", "VimLeave" }, {
+autocmd({ "InsertEnter", "VimLeave", "FocusLost" }, {
   group = ime_grp,
   callback = utils.switch_ime_cn,
 })
