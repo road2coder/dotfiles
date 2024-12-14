@@ -31,7 +31,20 @@ local keys = {
   { key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
   { key = "f", mods = "LEADER", action = act.TogglePaneZoomState },
 
-  { key = "m", mods = "LEADER", action = act.EmitEvent('trigger-max-window') },
+  -- toggle maximize
+  {
+    key = "m",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(window)
+      local old_dim = window:get_dimensions()
+      window:maximize()
+      local new_dim = window:get_dimensions()
+      if (old_dim.pixel_width == new_dim.pixel_width) and (old_dim.pixel_height == new_dim.pixel_height) then
+        window:restore()
+      end
+    end),
+  },
+  { key = "t", mods = "LEADER", action = act.EmitEvent("trigger-log") },
 }
 
 local mouse = {

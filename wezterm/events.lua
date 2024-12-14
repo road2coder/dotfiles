@@ -9,15 +9,14 @@ wezterm.on("gui-startup", function(cmd)
 end)
 
 wezterm.on("update-status", function(window)
-  local date = wezterm.strftime("%b %-d %H:%M ")
+  local date = wezterm.strftime("%Y-%m-%d %H:%M:%S")
 
   window:set_right_status(wezterm.format({
     { Text = " " },
     { Foreground = { Color = "#74c7ec" } },
-    { Background = { Color = "rgba(0,0,0,0.4)" } },
+    { Background = { Color = "rgba(0, 0, 0 ,0.2)" } },
     { Attribute = { Intensity = "Bold" } },
-    { Text = " " ..wezterm.nerdfonts.fa_calendar .. " " .. date },
-    { Text = " " },
+    { Text = "  " .. date .. " " },
   }))
 end)
 
@@ -29,7 +28,7 @@ wezterm.on("format-tab-title", function(tab, _, _, _, _)
   }
 end)
 
--- custom events
-wezterm.on("trigger-max-window", function(window)
-  window:maximize()
+wezterm.on("trigger-log", function(window)
+  local screens = wezterm.gui.screens()
+  wezterm.log_info(screens)
 end)
