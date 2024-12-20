@@ -37,9 +37,15 @@ def --env proxyon [port = "1080", addr?:string] {
   echo $"proxy enabled: ($addr) ($port)"
 }
 def --env proxyoff [] {
-  hide-env http_proxy
-  hide-env https_proxy
-  hide-env all_proxy
+  if "http_proxy" in $env {
+    hide-env http_proxy
+  }
+  if "https_proxy" in $env {
+    hide-env https_proxy
+  }
+  if "all_proxy" in $env {
+    hide-env all_proxy
+  }
   git config --global --unset http.proxy
   git config --global --unset https.proxy
   npm config delete proxy
