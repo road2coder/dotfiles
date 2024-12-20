@@ -8,13 +8,13 @@ wezterm.on("gui-startup", function(cmd)
   window:gui_window():maximize()
 end)
 
-wezterm.on("update-status", function(window)
+wezterm.on("update-right-status", function(window)
   local date = wezterm.strftime("%Y-%m-%d %H:%M:%S")
 
   window:set_right_status(wezterm.format({
     { Text = " " },
-    { Foreground = { Color = "#74c7ec" } },
-    { Background = { Color = "rgba(0, 0, 0 ,0.2)" } },
+    { Foreground = { Color = "#232536" } },
+    { Background = { Color = "rgba(0, 0, 0, 0.3)" } },
     { Attribute = { Intensity = "Bold" } },
     { Text = "  " .. date .. " " },
   }))
@@ -23,8 +23,10 @@ end)
 -- tabs title: z means zoomed
 wezterm.on("format-tab-title", function(tab, _, _, _, _)
   local suffix = tab.active_pane.is_zoomed and "z " or " "
+  local text = " " .. tab.tab_index + 1 .. suffix
   return {
-    { Text = " " .. tab.tab_index + 1 .. suffix },
+    { Foreground = { Color = tab.is_active and "#681da8" or "" } },
+    { Text = text },
   }
 end)
 
