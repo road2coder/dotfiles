@@ -4,6 +4,7 @@ local function flash_line(is_end, forward)
     if is_end then
       pattern = "$"
     end
+    ---@diagnostic disable
     require("flash").jump({
       pattern = pattern,
       search = {
@@ -14,6 +15,7 @@ local function flash_line(is_end, forward)
       },
       label = { after = { 0, 0 } },
     })
+    ---@diagnostic enable
   end
 end
 
@@ -27,10 +29,13 @@ return {
       { ",,", mode = { "n", "o", "x" }, "<CMD>lua require('flash').treesitter()<CR>", desc = "Flash Treesitter" },
       { ",k", mode = { "n", "o", "x" }, flash_line(), desc = "Flash Froward Lines Start" },
       { ",j", mode = { "n", "o", "x" }, flash_line(false, true), desc = "Flash Backward Lines Start" },
+      { ",K", mode = { "n", "o", "x" }, flash_line(true), desc = "Flash Froward Lines Start" },
+      { ",J", mode = { "n", "o", "x" }, flash_line(true, true), desc = "Flash Backward Lines Start" },
       -- stylua: ignore start
       { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
       { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      -- stylua: ignore end
     },
   },
   {
@@ -102,41 +107,19 @@ return {
     },
   },
   {
-    "nvim-telescope/telescope.nvim",
+    "ibhagwan/fzf-lua",
     keys = {
-      { "\\r", vim.lsp.buf.rename, desc = "[R]ename Variable" },
-      { "<leader>ff", LazyVim.pick("auto", { root = false }), desc = "Find Files (cwd)" },
-      { "<leader>fF", LazyVim.pick("auto"), desc = "Find Files (Root Dir)" },
+      { "<leader>/", LazyVim.pick("live_grep", { root = false }), desc = "Grep (Root Dir)" },
+      { "<leader>ff", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+      { "<leader>fF", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
       { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
-      { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-      { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Workspace Diagnostics" },
-      { "<leader>sD", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document Diagnostics" },
+      { "<leader>fR", "<cmd>FzfLua oldfiles<cr>", desc = "Recent" },
       { "<leader>sg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
       { "<leader>sG", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
-      { "<leader>sw", LazyVim.pick("grep_string", { root = false, word_match = "-w" }), desc = "Word (cwd)" },
-      { "<leader>sW", LazyVim.pick("grep_string", { word_match = "-w" }), desc = "Word (Root Dir)" },
-      { "<leader>sw", LazyVim.pick("grep_string", { root = false }), mode = "v", desc = "Selection (cwd)" },
-      { "<leader>sW", LazyVim.pick("grep_string"), mode = "v", desc = "Selection (Root Dir)" },
-    },
-    opts = {
-      defaults = {
-        path_display = { "truncate" },
-        sorting_strategy = "ascending",
-        layout_config = {
-          horizontal = { prompt_position = "top", preview_width = 0.55 },
-          vertical = { mirror = false },
-          width = 0.87,
-          height = 0.84,
-          preview_cutoff = 120,
-        },
-        file_ignore_patterns = {
-          ".node_modules/",
-          ".git/",
-          ".github/",
-          ".vscode/",
-          ".idea/",
-        },
-      },
+      { "<leader>sw", LazyVim.pick("grep_cword", { root = false }), desc = "Word (cwd)" },
+      { "<leader>sW", LazyVim.pick("grep_cword"), desc = "Word (Root Dir)" },
+      { "<leader>sw", LazyVim.pick("grep_visual", { root = false }), mode = "v", desc = "Selection (cwd)" },
+      { "<leader>sW", LazyVim.pick("grep_visual"), mode = "v", desc = "Selection (Root Dir)" },
     },
   },
   {

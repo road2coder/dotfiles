@@ -2,7 +2,7 @@ local map = vim.keymap.set
 local utils = require("utils")
 local curry = utils.curry
 
-map("n", "gh", vim.lsp.buf.hover, { desc = "Hover" })
+-- map("n", "gh", vim.lsp.buf.hover, { desc = "Hover" })
 map("v", "p", '"_dP', { desc = "paste multiple times" }) -- 一次复制可粘贴多次
 
 -- 转换选中的内容
@@ -12,7 +12,7 @@ map("v", "\\3", curry(utils.replace_selection, "pascal"), { desc = "Replace sele
 map("v", "\\4", curry(utils.replace_selection, "snake"), { desc = "Replace selection(snake)" })
 
 -- 复制选中内容的指定形式到剪切板
-map("v", "\\q", curry(utils.copy_selection, "snake"), { desc = "copy(kebab)" })
+map("v", "\\q", curry(utils.copy_selection, "kebab"), { desc = "copy(kebab)" })
 map("v", "\\w", curry(utils.copy_selection, "camel"), { desc = "copy(camel)" })
 map("v", "\\e", curry(utils.copy_selection, "pascal"), { desc = "copy(pascal)" })
 map("v", "\\r", curry(utils.copy_selection, "snake"), { desc = "copy(snake)" })
@@ -27,6 +27,8 @@ map("n", "\\1", curry(utils.copy_file_name, 0), { desc = "Copy File Name" })
 map("n", "\\2", curry(utils.copy_file_name, 1), { desc = "Copy File Name(without ext)" })
 map("n", "\\3", curry(utils.copy_file_name, 2), { desc = "Copy Relative File Path" })
 map("n", "\\4", curry(utils.copy_file_name, 3), { desc = "Copy File Path" })
+
+map("n", "\\r", vim.lsp.buf.rename, { desc = "[R]ename Symbol" })
 
 if not vim.g.vscode then
   -- insert 使用 ctrl + shift + v 可粘贴
