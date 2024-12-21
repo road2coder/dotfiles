@@ -42,3 +42,16 @@ if (executable starship) {
   mkdir ~/.cache/starship
   starship init nu | save -f ~/.cache/starship/init.nu
 }
+
+if $is_win and (executable yazi) {
+  let git_list = which git
+  if not ($git_list | is-empty) {
+    let git_path = $git_list.0.path
+    if $git_path =~ "shims" {
+     # git installed by scoop
+      $env.YAZI_FILE_ONE = $git_path | str replace -r "shims.*$" "apps\\git\\current\\usr\\bin\\file.exe"
+    } else {
+      # other
+    }
+  }
+}
