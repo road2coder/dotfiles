@@ -20,16 +20,21 @@ local keys = {
   { key = "}", mods = "CTRL|SHIFT", action = act.MoveTabRelative(1) },
 
   --panels
-  { key = "h", mods = "LEADER", action = act.SplitPane({ direction = "Left" }) },
-  { key = "j", mods = "LEADER", action = act.SplitPane({ direction = "Down" }) },
-  { key = "k", mods = "LEADER", action = act.SplitPane({ direction = "Up" }) },
-  { key = "l", mods = "LEADER", action = act.SplitPane({ direction = "Right" }) },
-  { key = "h", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Left") },
-  { key = "j", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
-  { key = "k", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
-  { key = "l", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
+  { key = "H", mods = "LEADER", action = act.SplitPane({ direction = "Left" }) },
+  { key = "J", mods = "LEADER", action = act.SplitPane({ direction = "Down" }) },
+  { key = "K", mods = "LEADER", action = act.SplitPane({ direction = "Up" }) },
+  { key = "L", mods = "LEADER", action = act.SplitPane({ direction = "Right" }) },
+  { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+  { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
+  { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+  { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
   { key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
   { key = "f", mods = "LEADER", action = act.TogglePaneZoomState },
+  { key = "?", mods = "CTRL", action = wezterm.action.PaneSelect },
+  { key = "h", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Left", 5 }) },
+  { key = "j", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Down", 5 }) },
+  { key = "k", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Up", 5 }) },
+  { key = "l", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Right", 5 }) },
 
   -- toggle maximize
   {
