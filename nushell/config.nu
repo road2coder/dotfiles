@@ -6,11 +6,13 @@ $env.config = {
   },
   hooks: {
     env_change: {
-      PWD: {
-        if ((executable fnm) and [.nvmrc .node-version package.json] | path exists | any {|i| $i}) {
-          fnm use
+      PWD: [
+        {
+          if ((executable fnm) and [.nvmrc .node-version package.json] | path exists | any {|i| $i}) {
+            fnm use
+          }
         }
-      }
+      ]
     }
   }
 }
