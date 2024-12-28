@@ -23,6 +23,12 @@ return {
         desc = "open float terminal",
       },
       {
+        vim.fn.has("win32") and "<c-_>" or "<c-/>",
+        mode = { "n" },
+        '<CMD>lua Snacks.terminal(nil, { win = {position = "float"}})<CR>',
+        desc = "open float terminal",
+      },
+      {
         "<leader>tr",
         mode = { "n" },
         '<CMD>lua Snacks.terminal(nil, { win = {position = "right"}})<CR>',
