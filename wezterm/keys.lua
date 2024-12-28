@@ -30,7 +30,7 @@ local keys = {
   { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
   { key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
   { key = "f", mods = "LEADER", action = act.TogglePaneZoomState },
-  { key = "?", mods = "CTRL", action = wezterm.action.PaneSelect },
+  { key = "?", mods = "CTRL|SHIFT", action = wezterm.action.PaneSelect },
   { key = "h", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Left", 5 }) },
   { key = "j", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Down", 5 }) },
   { key = "k", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Up", 5 }) },
