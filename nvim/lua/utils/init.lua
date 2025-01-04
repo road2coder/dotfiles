@@ -1,26 +1,29 @@
 local M = {}
 
+function M.has(item)
+  return vim.fn.has(item) == 1
+end
+
 function M.is_win()
   return vim.fn.has("win32") == 1
 end
 
 function M.switch_ime_en()
-  if vim.fn.executable("im-select") == 1 then
-    local os_name = vim.loop.os_uname().sysname
-    if os_name == "Darwin" then
-      vim.fn.system({ "im-select", "com.apple.keylayout.US" })
-    else
-      vim.fn.system({ "im-select", "1033" })
-    end
+  local os_name = vim.loop.os_uname().sysname
+  if os_name == "Darwin" and vim.fn.executable("im-select") then
+    vim.fn.system({ "im-select", "com.apple.keylayout.US" })
+  elseif os_name == "Windows_NT" or M.has("wsl") and vim.fn.executable("im-select.exe") then
+    vim.fn.system({ "im-select.exe", "1033" })
   elseif vim.fn.executable("fcitx5-remote") == 1 then
     vim.fn.system({ "fcitx5-remote", "-s", "keyboard-us" })
   end
 end
 
+-- only windows
 function M.switch_ime_cn()
   local has = vim.fn.has
-  if vim.fn.executable("im-select") == 1 and has("win32") == 1 or has("wsl") == 1 then
-    vim.fn.system({ "im-select", "2052" })
+  if vim.fn.executable("im-select.exe") == 1 and has("win32") == 1 or has("wsl") == 1 then
+    vim.fn.system({ "im-select.exe", "2052" })
   end
 end
 
