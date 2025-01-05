@@ -102,6 +102,8 @@ alias gct = git checkout
 alias vi = nvim
 alias lg = lazygit
 
-if $is_wsl {
+if $is_wsl and ("WSL_INITED" not-in $env) {
   cd ~
+  $env.WSL_INITED = "true"
 }
+
