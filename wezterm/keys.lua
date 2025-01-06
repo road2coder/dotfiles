@@ -14,6 +14,7 @@ local keys = {
 
   -- tabs
   { key = "n", mods = "CTRL|SHIFT", action = act.SpawnTab("CurrentPaneDomain") },
+  { key = "n", mods = "LEADER", action = act.SpawnTab({ DomainName = "local" }) },
   { key = "q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
   { key = "Q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = false }) },
   { key = "{", mods = "CTRL|SHIFT", action = act.MoveTabRelative(-1) },

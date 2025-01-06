@@ -1,5 +1,19 @@
 local wezterm = require("wezterm")
-local sys = { default_prog = { "nu" } }
+
+local wsl_domains = wezterm.default_wsl_domains()
+
+for _, dom in ipairs(wsl_domains) do
+  dom.default_cwd = "~"
+end
+
+local sys = {
+  default_prog = { "nu" },
+  wsl_domains = wsl_domains,
+}
+
+if #wsl_domains > 0 then
+  sys.default_domain = wsl_domains[1].name
+end
 
 if string.match(wezterm.target_triple, "darwin") then
   sys.set_environment_variables = {
