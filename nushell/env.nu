@@ -24,7 +24,7 @@ if (executable fnm) {
   if $is_win {
     $env.PATH = $list | append $env.FNM_MULTISHELL_PATH
   } else {
-    $env.PATH = $list | where $it !~ 'fnm' | append $'($env.FNM_MULTISHELL_PATH)/bin'
+    $env.PATH = $list | where $it !~ 'fnm' | prepend $'($env.FNM_MULTISHELL_PATH)/bin'
   }
   $env.FNM_NODE_DIST_MIRROR = "https://mirrors.ustc.edu.cn/node/"
 }
