@@ -30,6 +30,11 @@ map("n", "\\4", curry(utils.copy_file_name, 3), { desc = "Copy File Path" })
 
 map("n", "\\r", vim.lsp.buf.rename, { desc = "[R]ename Symbol" })
 
+-- stylua: ignore start
+map("n", "<leader>fe", function() Snacks.explorer() end, { desc = "Explorer Snacks (cwd)" })
+map("n", "<leader>fE", function() Snacks.explorer({ cwd = LazyVim.root() }) end, { desc = "Explorer Snacks (root dir)" })
+-- stylua: ignore end
+
 if not vim.g.vscode then
   -- insert 使用 ctrl + shift + v 可粘贴
   map("!", "<c-s-v>", "<c-r>+", { desc = "paste" })
