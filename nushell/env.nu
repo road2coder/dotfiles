@@ -31,6 +31,7 @@ if (executable fnm) {
 
 # rust
 if not $is_win {
+  $env.PATH = $env.PATH | split row ':' | prepend "/usr/local/bin/"
   let rust_bin_path = $'($env.HOME)/.cargo/bin'
   if ($rust_bin_path | path exists) {
     $env.PATH = $env.PATH | split row ':' | append $rust_bin_path
