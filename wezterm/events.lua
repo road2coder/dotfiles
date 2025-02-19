@@ -13,8 +13,8 @@ wezterm.on("update-right-status", function(window)
 
   window:set_right_status(wezterm.format({
     { Text = " " },
-    { Foreground = { Color = "#232536" } },
-    { Background = { Color = "rgba(0, 0, 0, 0.3)" } },
+    { Foreground = { Color = "#fffff" } },
+    { Background = { Color = "rgba(0, 0, 0, 0.7)" } },
     { Attribute = { Intensity = "Bold" } },
     { Text = "  " .. date .. " " },
   }))

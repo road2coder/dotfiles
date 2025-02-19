@@ -28,6 +28,14 @@ map("n", "\\2", curry(utils.copy_file_name, 1), { desc = "Copy File Name(without
 map("n", "\\3", curry(utils.copy_file_name, 2), { desc = "Copy Relative File Path" })
 map("n", "\\4", curry(utils.copy_file_name, 3), { desc = "Copy File Path" })
 
+-- 文件浏览器
+map("n", "<leader>fe", function()
+  Snacks.explorer()
+end, { desc = "Explorer Snacks (cwd)" })
+map("n", "<leader>fE", function()
+  Snacks.explorer({ cwd = LazyVim.root() })
+end, { desc = "Explorer Snacks (root)" })
+
 map("n", "\\r", vim.lsp.buf.rename, { desc = "[R]ename Symbol" })
 
 -- stylua: ignore start
