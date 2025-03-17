@@ -6,6 +6,18 @@ return {
         always_show_bufferline = true,
       },
     },
+    -- stylua: ignore start
+    keys = {
+      { "<M-1>", "<CMD>BufferLineGoToBuffer 1<CR>", desc = "Move to first(1st) buffer" },
+      { "<M-2>", "<CMD>BufferLineGoToBuffer 2<CR>", desc = "Move to second(2nd) buffer" },
+      { "<M-3>", "<CMD>BufferLineGoToBuffer 3<CR>", desc = "Move to third(3rd) buffer" },
+      { "<M-4>", "<CMD>BufferLineGoToBuffer 4<CR>", desc = "Move to forth(4th) buffer" },
+      { "<M-5>", "<CMD>BufferLineGoToBuffer 5<CR>", desc = "Move to fifth(5th) buffer" },
+      { "<M-6>", "<CMD>BufferLineGoToBuffer 6<CR>", desc = "Move to sixth(6th) buffer" },
+      { "<leader>bs", "<CMD>BufferLinePick<CR>", desc = "pick buffer" },
+      { "<M->", "<CMD>BufferLineGoToBuffer -1<CR>", desc = "Move to last buffer" },
+    -- stylua: ignore end
+    },
   },
   {
     "nvim-lualine/lualine.nvim",
