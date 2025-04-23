@@ -14,7 +14,11 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
     { import = "lazyvim.plugins.extras.vscode" },
+    { import = "lazyvim.plugins.extras.lang.nushell" },
     { import = "lazyvim.plugins.extras.lang.rust" },
+    { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.lang.vue" },
+    { import = "lazyvim.plugins.extras.lang.python" },
     { import = "plugins" },
   },
   defaults = {

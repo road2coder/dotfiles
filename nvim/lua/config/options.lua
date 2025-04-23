@@ -11,6 +11,7 @@
 -- 而和 let 相关的有 vim.g vim.w vim.b 等，它们设置的变量的生效范围不同。
 
 vim.g.autoformat = false
+vim.opt.jumpoptions = "stack"
 
 if not vim.g.vscode then
   -- 非 vscode 配置
