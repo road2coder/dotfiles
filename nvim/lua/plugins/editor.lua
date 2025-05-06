@@ -58,4 +58,16 @@ return {
       },
     },
   },
+  {
+    "snacks.nvim",
+    opts = {
+      picker = {
+        sources = {
+          explorer = {
+            exclude = { "src-tauri" },
+          },
+        },
+      },
+    },
+  },
 }
