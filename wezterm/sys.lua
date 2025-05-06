@@ -4,6 +4,7 @@ local wsl_domains = wezterm.default_wsl_domains()
 
 for _, dom in ipairs(wsl_domains) do
   dom.default_cwd = "~"
+  dom.default_prog = { "nu" }
 end
 
 local sys = {

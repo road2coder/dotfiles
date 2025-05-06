@@ -3,7 +3,8 @@ local wezterm = require("wezterm")
 return {
   window_decorations = "RESIZE",
   -- window_close_confirmation = "NeverPrompt",
-  color_scheme = "One Dark (Gogh)",
+  -- color_scheme = "One Dark (Gogh)",
+  color_scheme = "Tokyo Night",
   use_fancy_tab_bar = false,
   enable_tab_bar = true,
   show_tab_index_in_tab_bar = false,

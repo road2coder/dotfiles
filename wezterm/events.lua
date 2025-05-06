@@ -23,7 +23,7 @@ end)
 -- tabs title: z means zoomed
 wezterm.on("format-tab-title", function(tab)
   local cn_chars = { "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖", "拾" }
-  local suffix = (tab.active_pane.is_zoomed and #tab.panes > 1) and "z " or " "
+  local suffix = tab.active_pane.is_zoomed and "z " or " "
   local i = tab.tab_index + 1
   local text = " " .. (cn_chars[i] or i) .. suffix
   return {
