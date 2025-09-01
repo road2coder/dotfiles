@@ -22,13 +22,17 @@ return {
         -- rust_analyzer 通过 rustup 安装
         rust_analyzer = make_lsp_opts({ mason = false }),
         pyright = make_lsp_opts({
-          settings = {
-            python = {
-              -- 使用 python 虚拟环境
-              -- TODO: 根据是否存在 .venv 文件夹来动态控制
-              pythonPath = vim.fn.getcwd() .. "/.venv/bin/python",
-            },
-          },
+          -- 支持python虚拟环境
+          on_init = function(client)
+            local venv = vim.fs.find(".venv", { path = vim.fn.getcwd(), type = "directory" })[1]
+            if venv then
+              local exe_file = vim.loop.os_uname().sysname == "Windows_NT" and "/Scripts/python.exe" or "/bin/python"
+              local python_path = venv .. exe_file
+              if vim.fn.executable(python_path) == 1 then
+                client.config.settings.python.pythonPath = python_path
+              end
+            end
+          end,
         }),
       },
     },
