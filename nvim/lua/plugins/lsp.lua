@@ -21,6 +21,15 @@ return {
         cssls = make_lsp_opts({}),
         -- rust_analyzer 通过 rustup 安装
         rust_analyzer = make_lsp_opts({ mason = false }),
+        pyright = make_lsp_opts({
+          settings = {
+            python = {
+              -- 使用 python 虚拟环境
+              -- TODO: 根据是否存在 .venv 文件夹来动态控制
+              pythonPath = vim.fn.getcwd() .. "/.venv/bin/python",
+            },
+          },
+        }),
       },
     },
   },
