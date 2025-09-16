@@ -17,6 +17,7 @@ return {
       servers = {
         jsonls = make_lsp_opts({}),
         eslint = make_lsp_opts({}),
+        vue_ls = make_lsp_opts({}),
         html = make_lsp_opts({}),
         cssls = make_lsp_opts({}),
         -- rust_analyzer 通过 rustup 安装
@@ -57,7 +58,7 @@ return {
     end,
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "cspell",
