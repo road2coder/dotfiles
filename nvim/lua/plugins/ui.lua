@@ -52,5 +52,11 @@ return {
       { "<leader>sw", LazyVim.pick("grep_word", { root = false }), desc = "Visual selection or word (cwd)", mode = { "n", "x" } },
     },
     -- stylua: ignore end
+    opts = {
+      terminal = {
+        -- 从 nushell 启动时， 打开的终端使用 nushell
+        shell = os.getenv("IS_NU") == "1" and "nu" or vim.o.shell,
+      },
+    },
   },
 }

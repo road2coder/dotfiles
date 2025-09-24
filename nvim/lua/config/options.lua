@@ -11,15 +11,12 @@
 -- 而和 let 相关的有 vim.g vim.w vim.b 等，它们设置的变量的生效范围不同。
 
 vim.g.autoformat = false
-vim.opt.jumpoptions = "stack"
 
 if not vim.g.vscode then
   -- 非 vscode 配置
-  if os.getenv("IS_NU") == "1" then
-    vim.o.shell = "nu" -- 当从 nushell 启动时，使用 nushell 作为默认 shell
-  end
 else
   -- vscode 下的配置
+  vim.opt.jumpoptions = "stack"
   local vscode = require("vscode-neovim")
   vim.notify = vscode.notify
 end
