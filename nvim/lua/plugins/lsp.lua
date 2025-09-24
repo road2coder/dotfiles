@@ -67,4 +67,19 @@ return {
       },
     },
   },
+  {
+    "mrcjkb/rustaceanvim",
+    opts = {
+      server = {
+        on_attach = function(_, bufnr)
+          vim.keymap.set("n", "<leader>ct", function()
+            vim.cmd.RustLsp("testables")
+          end, { desc = "Code Action", buffer = bufnr })
+          vim.keymap.set("n", "<leader>cr", function()
+            vim.cmd.RustLsp("runnables")
+          end, { desc = "Rust Testables", buffer = bufnr })
+        end,
+      },
+    },
+  },
 }
