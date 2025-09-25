@@ -27,7 +27,7 @@ wezterm.on("format-tab-title", function(tab)
   local i = tab.tab_index + 1
   local text = " " .. (cn_chars[i] or i) .. suffix
   return {
-    { Foreground = { Color = tab.is_active and "#681da8" or "" } },
+    { Foreground = { Color = tab.is_active and "#ffffff" or "#666666" } },
     { Text = text },
   }
 end)
