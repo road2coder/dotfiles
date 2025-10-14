@@ -17,7 +17,6 @@ return {
       servers = {
         jsonls = make_lsp_opts({}),
         eslint = make_lsp_opts({}),
-        vue_ls = make_lsp_opts({}),
         html = make_lsp_opts({}),
         cssls = make_lsp_opts({}),
         -- rust_analyzer 通过 rustup 安装
@@ -74,10 +73,10 @@ return {
         on_attach = function(_, bufnr)
           vim.keymap.set("n", "<leader>ct", function()
             vim.cmd.RustLsp("testables")
-          end, { desc = "Code Action", buffer = bufnr })
+          end, { desc = "Rust Testables", buffer = bufnr })
           vim.keymap.set("n", "<leader>cr", function()
             vim.cmd.RustLsp("runnables")
-          end, { desc = "Rust Testables", buffer = bufnr })
+          end, { desc = "Rust Runnables", buffer = bufnr })
         end,
       },
     },
