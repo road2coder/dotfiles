@@ -34,6 +34,11 @@ return {
             end
           end,
         }),
+        ["*"] = {
+          keys = {
+            { "<leader>cr", false },
+          },
+        },
       },
     },
   },
